@@ -1,0 +1,8 @@
+streamlit
+fpdf
+pymongo
+mysql-connector-python
+groq
+langchain-community
+langchain-core
+langchain-groq
