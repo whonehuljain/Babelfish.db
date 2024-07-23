@@ -19,7 +19,7 @@ from langchain_groq import ChatGroq
 GROQ_API_KEY = "groq_ttdb_api_key"
 output_parser = StrOutputParser()
 llm = ChatGroq(model="llama3-70b-8192",api_key=GROQ_API_KEY)
-groq_client = Groq()
+groq_client = Groq(api_key=GROQ_API_KEY)
 
 db = None
 sql_schema = None
