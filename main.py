@@ -416,7 +416,8 @@ if database == "My SQL":
     with st.sidebar.form(key="sidebar_form"):
         db_user = st.text_input("Username:")
         db_password = st.text_input("Password:",type="password")
-        db_host = st.text_input("Host ('localhost' for local databases):")
+        db_host = st.text_input("Host ('localhost' for local databases):", help="""To connect to your publicly hosted database, enter the host link (URL or IP address) in the Hostname field.
+For a locally hosted database, use SSH to establish a connection and forward the local port (e.g., 127.0.0.1:3306).""")
         db_name = st.text_input("Schema Name:")
         submitted = st.form_submit_button("Connect")
 
@@ -562,7 +563,8 @@ if database == "Mongo DB":
     with st.sidebar.form(key="sidebar_form"):
         db_user = st.text_input("Username:")
         db_password = st.text_input("Password:",type="password")
-        db_host = st.text_input("Host ('localhost' for local databases):")
+        db_host = st.text_input("Host ('localhost' for local databases):", help="""To connect to your publicly hosted database, enter the host link (URL or IP address) in the Hostname field.
+For a locally hosted database, use SSH to establish a connection and forward the local port (e.g., 127.0.0.1:3306).""")
         db_name = st.text_input("Database Name:")
         collection_name = st.text_input("Collection Name:")
         submitted = st.form_submit_button("Connect")
