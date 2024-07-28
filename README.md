@@ -6,6 +6,8 @@
 
 **Babelfish.db** is an intelligent database assistant designed to facilitate natural language interactions with both SQL and NoSQL databases. It enables users to query their databases using plain English and generates responses in a conversational manner. Additionally, it can generate detailed PDF reports of the interactions.
 
+Try it out for pubically hosted databases: https://babelfish-db.streamlit.app/
+
 ## Features
 
 - **Natural Language Querying**: Allows users to ask questions in natural language.
