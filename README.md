@@ -100,4 +100,6 @@ Try it out for pubically hosted databases: https://babelfish-db.streamlit.app/
 - **Connection Issues**: Ensure that the database credentials are correct and that the database server is accessible.
 - **Query Errors**: Check the schema and the examples generated to ensure that the queries are being formed correctly.
 
+## License
 
+This project is licensed under the MIT License.
