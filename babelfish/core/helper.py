@@ -17,7 +17,7 @@ from langchain_groq import ChatGroq
 load_dotenv()
 
 output_parser = StrOutputParser()
-groq_api_key = os.getenv("GROQ_API_KEY")
+groq_api_key = os.environ.get("GROQ_API_KEY")
 llm = ChatGroq(model="llama-3.1-70b-versatile",api_key=groq_api_key)
 groq_client = Groq(api_key=groq_api_key)
 
