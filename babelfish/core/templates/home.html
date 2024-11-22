@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babelfish | Database Connection</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐠</text></svg>">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'connection-styles.css' %}">
+</head>
+<body class="dark-theme">
+    <div class="connection-wrapper">
+        <header class="connection-header">
+            <div class="d-flex align-items-center justify-content-between">
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="connection-container">
+            <div class="text-center mb-5">
+                <h1 class="app-title">🐠Babelfish</h1>
+                <p class="tagline">Your Universal Database Companion</p>
+            </div>
+
+            <div class="database-selection">
+                <h3>Choose Your Database Type</h3>
+                <div class="db-buttons">
+                    <button class="btn db-btn" data-target="mysql-form">
+                        <i class="fas fa-database"></i> MySQL
+                    </button>
+                    <button class="btn db-btn" data-target="mongodb-form">
+                        <i class="fas fa-server"></i> MongoDB
+                    </button>
+                </div>
+            </div>
+
+            <div class="connection-forms">
+                <!-- MySQL Connection Form -->
+                <form id="mysql-form" class="database-form" method="post" action="/mysql/">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="mysql-username">MySQL Username</label>
+                        <input type="text" id="mysql-username" name="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mysql-password">MySQL Password</label>
+                        <input type="password" id="mysql-password" name="password" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mysql-hostname">Hostname</label>
+                        <input type="text" id="mysql-hostname" name="hostname" class="form-control" value="localhost">
+                    </div>
+                    <div class="form-group">
+                        <label for="mysql-schema">Database Schema</label>
+                        <input type="text" id="mysql-schema" name="schema_name" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Connect MySQL</button>
+                </form>
+
+                <!-- MongoDB Connection Form -->
+                <form id="mongodb-form" class="database-form" method="post" action="/mongodb/">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="mongo-username">MongoDB Username</label>
+                        <input type="text" id="mongo-username" name="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mongo-password">MongoDB Password</label>
+                        <input type="password" id="mongo-password" name="password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="mongo-hostname">Hostname</label>
+                        <input type="text" id="mongo-hostname" name="hostname" class="form-control" value="localhost">
+                    </div>
+                    <div class="form-group">
+                        <label for="mongo-dbname">Database Name</label>
+                        <input type="text" id="mongo-dbname" name="db_name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mongo-collection">Collection Name</label>
+                        <input type="text" id="mongo-collection" name="collection_name" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Connect MongoDB</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="{% static 'connection-script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

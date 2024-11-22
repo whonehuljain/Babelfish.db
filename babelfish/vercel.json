@@ -1,0 +1,14 @@
+{
+    "builds": [
+        {
+            "src": "babelfish/wsgi.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "babelfish/wsgi.py"
+        }
+    ]
+}

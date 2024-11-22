@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Query Assistant</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐠</text></svg>">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dark-theme">
+    <div class="chat-wrapper"
+        data-connection-type="{{ request.session.connection_type|default:'' }}"
+        data-connection-status="{{ request.session.mysql_uri|default:''}}{{ request.session.mongo_uri|default:'' }}">
+
+        <!-- Header with DB Status and Theme Toggle -->
+        <header class="chat-header">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="db-status" id="db-status">
+                    <span class="status-dot red-dot" id="status-dot"></span>
+                    <span class="status-text">DB Not Connected, 
+                        <a href="#" id="connect-link" class="text-primary">Connect Database</a>
+                    </span>
+                </div>
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </header>
+        
+
+        <!-- Main Chat Container -->
+        <main class="chat-container">
+            <div id="chat-history" class="chat-history"></div>
+            
+            <div class="chat-input-area">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="user-message" 
+                        class="form-control" 
+                        placeholder="Ask a question about your database..."
+                        aria-label="Database query input"
+                    >
+                    <button 
+                        id="send-btn" 
+                        class="btn btn-primary send-button" 
+                        type="button" 
+                        aria-label="Send message"
+                    >
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{% static 'script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+:root {
+  /* Dark Theme Colors */
+  --bg-primary-dark: #1a1a2e;
+  --bg-secondary-dark: #22223b;
+  --bg-input-dark: #2c2c44;
+  --text-primary-dark: #eaeaea;
+  
+  /* Light Theme Colors */
+  --bg-primary-light: #f4f4f6;
+  --bg-secondary-light: #ffffff;
+  --bg-input-light: #ffffff;
+  --text-primary-light: #2e2e33;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+}
+
+/* Status Dot - Added to make it visible */
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.red-dot {
+  background-color: #f44336;
+}
+
+.green-dot {
+  background-color: #4caf50;
+}
+
+/* Theme Toggle Button - Added to handle icon transition */
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.theme-toggle-btn .fa-sun {
+  display: none;
+}
+
+.dark-theme .theme-toggle-btn .fa-moon {
+  display: none;
+}
+
+.dark-theme .theme-toggle-btn .fa-sun {
+  display: inline-block;
+}
+
+.chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.chat-header {
+  flex-shrink: 0;
+  margin-bottom: 1rem;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: var(--bg-secondary-dark);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chat-history {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+/* Custom Scrollbar */
+.chat-history::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-history::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-history::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.chat-input-area {
+  flex-shrink: 0;
+  padding: 1rem;
+  background-color: var(--bg-input-dark);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+/* DB Status Dot Styles - Ensure Visibility */
+.db-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red-dot {
+  background-color: #f44336;
+}
+
+.green-dot {
+  background-color: #4caf50;
+}
+
+
+/* Rest of the CSS remains the same... */
+
+/* Existing remaining CSS from the previous version */
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.user-profile {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.bot-profile {
+  background-color: #4ecdc4;
+  color: white;
+}
+
+/* Chat Message Container with Profile */
+.chat-message-container {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+  gap: 0.75rem;
+}
+
+.chat-message-container.user {
+  flex-direction: row-reverse;
+}
+
+.chat-message-container.bot {
+  flex-direction: row;
+}
+
+.chat-bubble {
+  max-width: calc(100% - 60px);
+  margin-bottom: 0.25rem;
+  padding: 0.75rem;
+  border-radius: 15px;
+  word-wrap: break-word;
+}
+
+.chat-bubble.user {
+  background-color: #3949ab;
+  color: white;
+  text-align: right;
+}
+
+.chat-bubble.bot {
+  background-color: #424874;
+  color: white;
+  text-align: left;
+}
+
+/* Theme Specific Styles */
+.dark-theme {
+  background-color: var(--bg-primary-dark);
+  color: var(--text-primary-dark);
+}
+
+.light-theme .chat-container {
+  background-color: var(--bg-secondary-light);
+}
+
+.light-theme .chat-bubble.user {
+  background-color: #007bff;
+}
+
+.light-theme .chat-bubble.bot {
+  background-color: #e5e5ea;
+  color: black;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .chat-wrapper {
+      padding: 0.5rem;
+      max-width: 100%;
+  }
+
+  .chat-bubble {
+      max-width: calc(100% - 50px);
+  }
+
+  .profile-icon {
+      width: 35px;
+      height: 35px;
+      font-size: 0.9rem;
+  }
+}
